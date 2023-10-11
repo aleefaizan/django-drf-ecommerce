@@ -13,14 +13,14 @@ class BrandFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Brand
 
-    name = "test_brand"
+    name = factory.sequence(lambda n: "brand_%d" % n)
 
 
 class ProductFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Product
 
-    name = "test_product"
+    name = factory.sequence(lambda n: "product_%d" % n)
     description = "test description"
     is_digital = True
     brand = factory.SubFactory(BrandFactory)
